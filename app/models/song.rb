@@ -5,30 +5,30 @@ class Song < ActiveRecord::Base
     
   def artist_name=(name)
      self.artist_name = Artist.find_or_create_by(name: name)
-   end
+  end
  
-   def artist_name
+  def artist_name
       self.artist_name ? self.artist.name : nil
-   end
+  end
    
-    def genre_name=(name)
+  def genre_name=(name)
      self.genre_name = Genre.find_or_create_by(name: name)
-   end
+  end
  
-   def genre_name
-      self.genre_name ? self.genre.name : nil
-   end
+  def genre_name
+    self.genre_name ? self.genre.name : nil
+  end
    
   def note_contents=(ids)
-     ids.each do |id|
-       note = Note.find(id)
-       self.notes << note
+    ids.each do |id|
+      note = Note.find(id)
+      self.notes << note
      end
    end
    
-   def note_contents
-     self.notes.each do |note|
-       note.content
+  def note_contents
+    self.notes.each do |note|
+      note.content
      end
    end
 end
