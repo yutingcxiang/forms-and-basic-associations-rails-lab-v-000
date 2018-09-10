@@ -20,16 +20,19 @@ class Song < ActiveRecord::Base
   end
    
   def note_contents=(contents)
-    if !contents.empty?
     contents.each do |content|
-      note = Note.find_or_create_by(content: content)
-      self.notes << note
+      if !content.empty?
+        note = Note.find_or_create_by(content: content)
+        self.notes << note
+      end
      end
   end
    
   def note_contents
     self.notes.each do |note|
+      if !note.empty?
       note.content
+    end
     end
   end
 end
