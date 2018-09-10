@@ -31,8 +31,8 @@ class Song < ActiveRecord::Base
   def note_contents
     self.notes.each do |note|
       if !note.empty?
-      note.content
-    end
+        note.content
+      end
     end
   end
 end
